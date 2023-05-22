@@ -1,8 +1,13 @@
-﻿namespace OgraasApi.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace OgraasApi.Models
 {
 	public class Board
 	{
-        public Random random = new Random();
+
+		public int Id { get; set; }
+	  public Random random = new Random();
+    [NotMapped]
 		public Cell[,] Cells { get; set; } = new Cell[10,10];
         public List<Weed> Weeds = new()
         {

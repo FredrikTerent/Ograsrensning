@@ -1,6 +1,6 @@
 ﻿namespace OgraasApi.Data
 {
-    public class CellRepository
+    public class CellRepository: ICell
     {
     }
 }

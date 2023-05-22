@@ -2,6 +2,8 @@
 {
 	public abstract class Weed
 	{
+
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Width { get; set; }
         public int Hits { get; set; }
