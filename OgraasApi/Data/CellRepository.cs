@@ -1,32 +1,51 @@
-﻿using OgraasApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using OgraasApi.Models;
 
 namespace OgraasApi.Data
 {
     public class CellRepository : ICell
     {
+        private readonly ApplicationDbContext _dbContext;
+
+        public CellRepository(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        
         public async Task<Cell> CreateAsync(Cell cell)
         {
-            throw new NotImplementedException();
+            _dbContext.Add(cell);
+            await _dbContext.SaveChangesAsync();
+            return cell;
         }
 
         public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var cell = _dbContext.Cells.FirstOrDefault(c => c.Id == id);
+            if (cell != null)
+            {
+                _dbContext.Remove(cell);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Cell>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var cellList = await _dbContext.Cells.Include(c=>c.Weed).ToListAsync();
+            return cellList;    
         }
 
         public async Task<Cell> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var cell = await _dbContext.Cells.FirstOrDefaultAsync(c => c.Id == id);
+            return cell;
         }
 
         public async Task<Cell> UpdateAsync(Cell cell)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(cell);
+            await _dbContext.SaveChangesAsync();
+            return cell;
         }
     }
 }
