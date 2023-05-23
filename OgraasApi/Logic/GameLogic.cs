@@ -6,8 +6,9 @@ namespace OgraasApi.Logic
 	{
 		public Player player { get; set; }
 
-		public void Pangakrut(Player player, int x, int y)
+		public HitResponse Pangakrut(Player player, int x, int y)
 		{
+			var hitResponse = new HitResponse();
 			if (!player.Board.Cells[x, y].IsHit)
 			{
 				player.Board.Cells[x, y].IsHit = true;
@@ -20,7 +21,15 @@ namespace OgraasApi.Logic
 					}
 				}
 			}
+
 			GameOver(player);
+
+			hitResponse.Col = y;
+			hitResponse.Row = x;
+			hitResponse.Hit = player.Board.Cells[x, y].IsOccupied;
+			hitResponse.Victory = player.isLoss;
+
+			return hitResponse;
 		}
 
 		public bool GameOver(Player player) 
