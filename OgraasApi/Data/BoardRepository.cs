@@ -73,12 +73,20 @@ namespace OgraasApi.Data
             {
                 for (int col = 0; col <= 9; col++)
                 {
-                    coordinates.Add(new Coordinates() { row = rad, col = col, cell = board.Cells[rad, col], BoardId = board.Id });
+                    var oldCell = oldCoord.Find(c => c.row == rad && c.col == col);
+                    if (oldCell != null)
+                    {
+                        oldCell.cell = board.Cells[rad, col];
+                    }
+                    //else
+                    //{
+
+                    //    context.Coordinates.Add(new Coordinates() { row = rad, col = col, cell = board.Cells[rad, col], BoardId = board.Id });
+                    //}
+
                 }
             }
-            oldCoord = coordinates;
             context.Update(board);
-            context.Update(oldCoord);
             await context.SaveChangesAsync();
 
             return board;
