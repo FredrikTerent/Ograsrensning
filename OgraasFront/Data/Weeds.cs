@@ -13,8 +13,8 @@ namespace OgraasFront.Data
         }
         public async Task<ResponseDto> Click(ClickDto click)
         {
-            var response = await _http.PostAsJsonAsync("/api/", click);
-            return (await response.Content.ReadFromJsonAsync<ResponseDto>())!;
+            var response = await _http.PostAsJsonAsync("/api/ClickDto", click);
+            return (await response.Content.ReadFromJsonAsync<ResponseDto>()) ?? new ResponseDto();
 
         }
     }
