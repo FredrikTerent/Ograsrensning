@@ -4,10 +4,10 @@ namespace OgraasApi.Data
 {
     public interface IBoard
     {
-        Task Create (Board board);
-        Task Update (Board board);
-        Task <Board> GetById (int id);
-        Task <IEnumerable<Board>> GetAll();
-        Task Delete (int id);
+        Task<Board> CreateAsync(Board board);
+        Task<Board> UpdateAsync(Board board);
+        Task<Board> GetByIdAsync(int id);
+        Task<IEnumerable<Board>> GetAllAsync();
+        Task DeleteAsync(int id);
     }
 }

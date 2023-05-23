@@ -4,27 +4,27 @@ namespace OgraasApi.Data
 {
     public class PlayerRepository : IPlayer
     {
-        public async Task Create(Player player)
+        public async Task<Player> CreateAsync(Player player)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Player>> GetAll()
+        public async Task<IEnumerable<Player>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Player> GetById(int id)
+        public async Task<Player> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Update(Player player)
+        public async Task<Player> UpdateAsync(Player player)
         {
             throw new NotImplementedException();
         }

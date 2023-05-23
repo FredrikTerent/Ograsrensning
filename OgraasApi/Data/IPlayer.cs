@@ -4,11 +4,11 @@ namespace OgraasApi.Data
 {
     public interface IPlayer
     {
-        Task Create (Player player);
-        Task Update (Player player);
-        Task Delete (int id);
-        Task<IEnumerable<Player>> GetAll();
-        Task <Player> GetById (int id);
+        Task<Player> CreateAsync(Player player);
+        Task<Player> UpdateAsync(Player player);
+        Task DeleteAsync(int id);
+        Task<IEnumerable<Player>> GetAllAsync();
+        Task<Player> GetByIdAsync(int id);
 
     }
 }
