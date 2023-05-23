@@ -4,27 +4,27 @@ namespace OgraasApi.Data
 {
     public class WeedRepository : IWeed
     {
-        public async Task Create(Weed weed)
+        public async Task<Weed> CreateAsync(Weed weed)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Weed>> GetAll()
+        public async Task<IEnumerable<Weed>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Weed> GetById(int? id)
+        public async Task<Weed> GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Update(Weed weed)
+        public async Task<Weed> UpdateAsync(Weed weed)
         {
             throw new NotImplementedException();
         }

@@ -4,27 +4,27 @@ namespace OgraasApi.Data
 {
     public class CellRepository : ICell
     {
-        public async Task Create(Cell cell)
+        public async Task<Cell> CreateAsync(Cell cell)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Cell>> GetAll()
+        public async Task<IEnumerable<Cell>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Cell> GetById(int id)
+        public async Task<Cell> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Update(Cell cell)
+        public async Task<Cell> UpdateAsync(Cell cell)
         {
             throw new NotImplementedException();
         }

@@ -4,10 +4,10 @@ namespace OgraasApi.Data
 {
     public interface ICell
     {
-        Task Create(Cell cell);
-        Task Update(Cell cell);
-        Task<Cell> GetById(int id);
-        Task<IEnumerable<Cell>> GetAll();
-        Task Delete(int id);
+        Task<Cell> CreateAsync(Cell cell);
+        Task<Cell> UpdateAsync(Cell cell);
+        Task<Cell> GetByIdAsync(int id);
+        Task<IEnumerable<Cell>> GetAllAsync();
+        Task DeleteAsync(int id);
     }
 }
