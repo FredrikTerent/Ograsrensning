@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OgraasFront.Dto;
 using OgraasFront.Models;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace OgraasFront.Controllers
 {
@@ -18,6 +20,20 @@ namespace OgraasFront.Controllers
             return View();
         }
 
+        public IActionResult Click(ClickDto click)
+        {
+            var response = new ResponseDto
+            {
+                Row = click.Row,
+                Col = click.Col,
+                Hit = true,
+                Winner = false,
+            };
+
+            string serializedResponse = JsonSerializer.Serialize(response);
+
+            return Ok(serializedResponse);
+        }
         public IActionResult Privacy()
         {
             return View();

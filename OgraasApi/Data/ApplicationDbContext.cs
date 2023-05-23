@@ -11,5 +11,6 @@ namespace OgraasApi.Data
         public DbSet<Cell> Cells { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Weed> Weeds { get; set; }
+        public DbSet<Coordinates> Coordinates { get; set; }
     }
 }

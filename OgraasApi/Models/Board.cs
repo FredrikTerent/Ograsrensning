@@ -39,7 +39,6 @@ namespace OgraasApi.Models
                 bool Error = true;
                 while (Error)
                 {
-                    Error = false;
                     int direction = random.Next(1, 100) % 2;// 0 vertikal, allt annat horizontal
                     var rowNumberStart = random.Next(0, 10);
                     var colNumberStart = random.Next(0, 10);
@@ -50,12 +49,12 @@ namespace OgraasApi.Models
                     //if vertikal
                     if (direction == 0)
                     {
-                        colNumberEnd = colNumberEnd + w.Width;
+                        rowNumberEnd = rowNumberStart + w.Width;
                     }
                     //if horisontell
                     else
                     {
-                        rowNumberEnd = rowNumberStart + w.Width;
+                        colNumberEnd = colNumberEnd + w.Width;
                     }
 
                     //Hålla sig inom spelplanen
@@ -66,29 +65,28 @@ namespace OgraasApi.Models
                     }
 
                     //Kolla om Cell är upptagen
-
+                    List<Cell> targetCells = new();
 
                     for (int i = rowNumberStart; i <= rowNumberEnd; i++)
                     {
                         for (int j = colNumberStart; j <= colNumberEnd; j++)
                         {
-                            if (Cells[i, j].IsOccupied)
-                            {
-                                Error = true;
-                                continue;
-                            }
+                            targetCells.Add(Cells[i, j]);
+                        }
+                    }
 
-                        }
-                    }
-                    //placera ut allt ogräs
-                    for (int i = rowNumberStart; i <= rowNumberEnd; i++)
+                    if(targetCells.Any(x => x.IsOccupied))
                     {
-                        for (int j = colNumberStart; j <= colNumberEnd; j++)
-                        {
-                            Cells[i, j].Weed = w;
-                            Error = false;
-                        }
+                        Error = true;
+                        continue;
                     }
+
+                    //Placera ut ogräs
+                    foreach(var cell in targetCells)
+                    {
+                        cell.Weed = w;
+                    }
+                    Error = false;
                 }
             }
         }
