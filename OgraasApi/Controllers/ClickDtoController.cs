@@ -27,8 +27,7 @@ namespace OgraasApi.Controllers
 
             int x= clickDto.Row, y= clickDto.Col;
             var player = playerRepo.GetByIdAsync(clickDto.PlayerId).Result;
-            var hitResponse = 
-            Logic.Pangakrut(player, x, y);
+            var hitResponse = Logic.Pangakrut(player, x, y);
 
             return hitResponse;
         }

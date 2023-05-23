@@ -39,6 +39,13 @@ namespace OgraasApi.Data
             return kvickrot;
         }
 
+        public async Task<Weed> CreateWeedAsync(Weed weed)
+        {
+            _dbContext.Add(weed);
+            await _dbContext.SaveChangesAsync();
+            return weed;
+        }
+
         public async Task DeleteKardborreAsync(int id)
         {
             var detOgras = _dbContext.Weeds.FindAsync(id);

@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IWeeds, Weeds>();
-builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7268") });
+builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7268/") });
 
 var app = builder.Build();
 

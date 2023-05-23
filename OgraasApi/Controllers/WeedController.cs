@@ -82,25 +82,30 @@ namespace OgraasApi.Controllers
         }
 
         // POST api/<BoardController>
+        //[HttpPost]
+        //public async Task<Maskros> Post([FromBody] Maskros maskros)
+        //{
+        //    return await weedRepo.CreateMaskrosAsync(maskros);
+        //}
+        //[HttpPost]
+        //public async Task<Kardborre> Post([FromBody] Kardborre kardborre)
+        //{
+        //    return await weedRepo.CreateKardborreAsync(kardborre);
+        //}
+        //[HttpPost]
+        //public async Task<Kvickrot> Post([FromBody] Kvickrot kvickrot)
+        //{
+        //    return await weedRepo.CreateKvickrotAsync(kvickrot);
+        //}
+        //[HttpPost]
+        //public async Task<Kirskal> Post([FromBody] Kirskal kirskal)
+        //{
+        //    return await weedRepo.CreateKirskalAsync(kirskal);
+        //}
         [HttpPost]
-        public async Task<Maskros> Post([FromBody] Maskros maskros)
+        public async Task<Weed> Post([FromBody] Weed weed)
         {
-            return await weedRepo.CreateMaskrosAsync(maskros);
-        }
-        [HttpPost]
-        public async Task<Kardborre> Post([FromBody] Kardborre kardborre)
-        {
-            return await weedRepo.CreateKardborreAsync(kardborre);
-        }
-        [HttpPost]
-        public async Task<Kvickrot> Post([FromBody] Kvickrot kvickrot)
-        {
-            return await weedRepo.CreateKvickrotAsync(kvickrot);
-        }
-        [HttpPost]
-        public async Task<Kirskal> Post([FromBody] Kirskal kirskal)
-        {
-            return await weedRepo.CreateKirskalAsync(kirskal);
+            return await weedRepo.CreateWeedAsync(weed);
         }
 
         //// PUT api/<BoardController>/5

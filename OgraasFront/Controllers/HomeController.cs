@@ -32,8 +32,9 @@ namespace OgraasFront.Controllers
             //    Hit = true,
             //    Winner = false,
             //};
+            click.PlayerId = 1;
 
-            var response = _weedsservice.Click(click);
+            var response = _weedsservice.Click(click).Result;
 
             string serializedResponse = JsonSerializer.Serialize(response);
 

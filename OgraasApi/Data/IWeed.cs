@@ -29,5 +29,6 @@ namespace OgraasApi.Data
         Task DeleteKirskalAsync(int id);
         Task<Weed> GetWeedByIdAsync(int id);
         Task<IEnumerable<Weed>> GetAllWeedAsync();
+        Task<Weed> CreateWeedAsync(Weed weed);
     }
 }
