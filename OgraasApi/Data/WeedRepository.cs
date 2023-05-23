@@ -4,12 +4,12 @@ namespace OgraasApi.Data
 {
     public class WeedRepository : IWeed
     {
-        public async Task<Weed> Create(Weed weed)
+        public async Task Create(Weed weed)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Weed> Delete(int id)
+        public async Task Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -24,7 +24,7 @@ namespace OgraasApi.Data
             throw new NotImplementedException();
         }
 
-        public async Task<Weed> Update(Weed weed)
+        public async Task Update(Weed weed)
         {
             throw new NotImplementedException();
         }

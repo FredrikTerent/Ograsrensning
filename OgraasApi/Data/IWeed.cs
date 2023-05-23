@@ -6,8 +6,8 @@ namespace OgraasApi.Data
     {
         Task<Weed> GetById(int? id);
         Task<IEnumerable<Weed>> GetAll();
-        Task<Weed> Create(Weed weed);
-        Task<Weed> Update(Weed weed);
-        Task<Weed> Delete(int id);
+        Task Create(Weed weed);
+        Task Update(Weed weed);
+        Task Delete(int id);
     }
 }

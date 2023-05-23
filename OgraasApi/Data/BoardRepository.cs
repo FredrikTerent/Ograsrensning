@@ -24,7 +24,7 @@ namespace OgraasApi.Data
             throw new NotImplementedException();
         }
 
-        public Task Create(Board board)
+        public async Task Create(Board board)
         {
             throw new NotImplementedException();
         }
