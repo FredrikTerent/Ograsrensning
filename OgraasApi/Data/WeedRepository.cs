@@ -1,107 +1,139 @@
-﻿using OgraasApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using OgraasApi.Models;
 
 namespace OgraasApi.Data
 {
     public class WeedRepository : IWeed
     {
-        public Task<Maskros> CreateKardborreAsync(Maskros makros)
+        private readonly ApplicationDbContext _dbContext;
+
+        public WeedRepository(ApplicationDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+        }
+        public async Task<Maskros> CreateMaskrosAsync(Maskros maskros)
+        {
+            _dbContext.Add(maskros);
+            await _dbContext.SaveChangesAsync();
+            return maskros;
         }
 
-        public Task<Kardborre> CreateKardborreAsync(Kardborre kardborre)
+        public async Task<Kardborre> CreateKardborreAsync(Kardborre kardborre)
         {
-            throw new NotImplementedException();
+            _dbContext.Add(kardborre);
+            await _dbContext.SaveChangesAsync();
+            return kardborre;
         }
 
-        public Task<Kirskal> CreateKirskalAsync(Kirskal kirskal)
+        public async Task<Kirskal> CreateKirskalAsync(Kirskal kirskal)
         {
-            throw new NotImplementedException();
+            _dbContext.Add(kirskal);
+            await _dbContext.SaveChangesAsync();
+            return kirskal;
         }
 
-        public Task<Kvickrot> CreateKvickrotAsync(Kvickrot kvickrot)
+        public async Task<Kvickrot> CreateKvickrotAsync(Kvickrot kvickrot)
         {
-            throw new NotImplementedException();
+            _dbContext.Add(kvickrot);
+            await _dbContext.SaveChangesAsync();
+            return kvickrot;
         }
 
-        public Task DeleteKardborreAsync(int id)
+        public async Task DeleteKardborreAsync(int id)
         {
-            throw new NotImplementedException();
+            var detOgras = _dbContext.Weeds.FindAsync(id);
+            _dbContext.Remove(detOgras);
+            await _dbContext.SaveChangesAsync();
+                        
         }
 
-        public Task DeleteKirskalAsync(int id)
+        public async Task DeleteKirskalAsync(int id)
         {
-            throw new NotImplementedException();
+            var detOgras = _dbContext.Weeds.FindAsync(id);
+            _dbContext.Remove(detOgras);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task DeleteKvickrotAsync(int id)
+        public async Task DeleteKvickrotAsync(int id)
         {
-            throw new NotImplementedException();
+            var detOgras = _dbContext.Weeds.FindAsync(id);
+            _dbContext.Remove(detOgras);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task DeleteMakrosAsync(int id)
+        public async Task DeleteMaskrosAsync(int id)
         {
-            throw new NotImplementedException();
+            var detOgras = _dbContext.Weeds.FindAsync(id);
+            _dbContext.Remove(detOgras);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Kardborre>> GetAllKardborreAsync()
+        public async Task<IEnumerable<Kardborre>> GetAllKardborreAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kardborre>().ToListAsync();
         }
 
-        public Task<IEnumerable<Kirskal>> GetAllKirskalAsync()
+        public async Task<IEnumerable<Kirskal>> GetAllKirskalAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kirskal>().ToListAsync();
         }
 
-        public Task<IEnumerable<Kvickrot>> GetAllKvickrotAsync()
+        public async Task<IEnumerable<Kvickrot>> GetAllKvickrotAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kvickrot>().ToListAsync();
         }
 
-        public Task<IEnumerable<Maskros>> GetAllMakrosAsync()
+        public async Task<IEnumerable<Maskros>> GetAllMaskrosAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Maskros>().ToListAsync();
         }
 
-        public Task<Kardborre> GetKardborreByIdAsync(int? id)
+        public async Task<Kardborre> GetKardborreByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kardborre>().FindAsync(id);
         }
 
-        public Task<Kirskal> GetKirskalByIdAsync(int? id)
+        public async Task<Kirskal> GetKirskalByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kirskal>().FindAsync(id);
         }
 
-        public Task<Kvickrot> GetKvickrotByIdAsync(int? id)
+        public async Task<Kvickrot> GetKvickrotByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Kvickrot>().FindAsync(id);
         }
 
-        public Task<Maskros> GetMakrosByIdAsync(int? id)
+        public async Task<Maskros> GetMaskrosByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<Maskros>().FindAsync(id);
         }
 
-        public Task<Maskros> UpdateKardborreAsync(Maskros makros)
+        public async Task<Maskros> UpdateMaskrosAsync(Maskros maskros)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(maskros);
+            await _dbContext.SaveChangesAsync();
+            return maskros;
         }
 
-        public Task<Kardborre> UpdateKardborreAsync(Kardborre kardborre)
+        public async Task<Kardborre> UpdateKardborreAsync(Kardborre kardborre)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(kardborre);
+            await _dbContext.SaveChangesAsync();
+            return kardborre;
         }
 
-        public Task<Kvickrot> UpdateKardborreAsync(Kvickrot kvickrot)
+        public async Task<Kvickrot> UpdateKvickrotAsync(Kvickrot kvickrot)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(kvickrot);
+            await _dbContext.SaveChangesAsync();
+            return kvickrot;
         }
 
-        public Task<Kirskal> UpdateKirskalAsync(Kirskal kirskal)
+        public async Task<Kirskal> UpdateKirskalAsync(Kirskal kirskal)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(kirskal);
+            await _dbContext.SaveChangesAsync();
+            return kirskal;
         }
     }
 }
