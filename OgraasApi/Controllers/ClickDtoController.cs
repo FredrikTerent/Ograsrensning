@@ -22,11 +22,11 @@ namespace OgraasApi.Controllers
 
         // POST api/<ClickDtoController>
         [HttpPost("{id}")]
-        public HitResponse Post([FromBody] int id, ClickDto clickDto)
+        public HitResponse Post(ClickDto clickDto)
         {
 
             int x= clickDto.Row, y= clickDto.Col;
-            var player = playerRepo.GetByIdAsync(id).Result;
+            var player = playerRepo.GetByIdAsync(clickDto.PlayerId).Result;
             var hitResponse = 
             Logic.Pangakrut(player, x, y);
 
