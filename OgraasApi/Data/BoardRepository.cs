@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using OgraasApi.Migrations;
 using OgraasApi.Models;
 using System.Collections.Generic;
 
@@ -39,7 +41,16 @@ namespace OgraasApi.Data
 
         public async Task<IEnumerable<Board>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var boardList = await context.Boards.OrderBy(x => x.Id).ToListAsync();
+            foreach (var board in boardList)
+            {
+                List<Coordinates> coordinates = context.Coordinates.Where(c => c.BoardId == board.Id).OrderBy(s => s.Id).ToList();
+                foreach (var coord in coordinates)
+                {
+                    board.Cells[coord.row, coord.col] = coord.cell;
+                }
+            }
+            return boardList;
         }
 
         public async Task<Board> GetByIdAsync(int id)
