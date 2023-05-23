@@ -2,22 +2,50 @@
 
 namespace OgraasApi.Logic
 {
-	public class CreateBoard
+	public class GameLogic
 	{
-        public Player Player { get; set; }
-        public Board Board { get; set; } = new();
+		public Player player { get; set; }
 
-        public void Pangakrut(int x, int y)
-        {
-            if (Board.Cells[x, y].IsOccupied)
-            {
-                Board.Cells[x, y].IsHit = true;
+		public void Pangakrut(Player player, int x, int y)
+		{
+			if (!player.Board.Cells[x, y].IsHit)
+			{
+				player.Board.Cells[x, y].IsHit = true;
 
-                if (Board.Cells[x, y].Weed != null)
+				if (player.Board.Cells[x, y].IsOccupied)
+				{
+					if (player.Board.Cells[x, y].Weed != null)
+					{
+						player.Board.Cells[x, y].Weed.Hits += 1;
+					}
+				}
+			}
+			GameOver(player);
+		}
+
+		public bool GameOver(Player player) 
+		{
+			if (player.isLoss)
+			{
+				return true;
+			} 
+			else 
+			{
+				return false; 
+			}
+		}
+
+		public void TestGame()
+		{
+			Player p = new Player("Pelle");
+			for(int i = 0; i < 10; i++)
+			{
+                for (int j = 0; j < 10; j++)
                 {
-
+					Pangakrut(p, i, j);
                 }
             }
-        }
-    }
+			GameOver(p);
+		}
+	}
 }

@@ -34,8 +34,8 @@ body {
     border: 1px solid blue;
 }
 
-board-square:hover {
-    border-color: hotpink;
+.board-square:hover {
+    border-color: lightpink;
 }
 
 .board-square.hit {
