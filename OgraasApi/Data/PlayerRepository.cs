@@ -1,32 +1,45 @@
-﻿using OgraasApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using OgraasApi.Models;
 
 namespace OgraasApi.Data
 {
     public class PlayerRepository : IPlayer
     {
-        public Task Create(Player player)
+        private readonly ApplicationDbContext dbContext;
+
+        public PlayerRepository(ApplicationDbContext dbContext)
         {
-            throw new NotImplementedException();
+            this.dbContext = dbContext;
+        }
+        public async Task<Player> CreateAsync(Player player)
+        {
+            dbContext.Add(player);
+            await dbContext.SaveChangesAsync();
+            return player;
         }
 
-        public Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var player = await dbContext.Players.FindAsync(id);
+            dbContext.Remove(player);
+            await dbContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Cell>> GetAll()
+        public async Task<IEnumerable<Player>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await dbContext.Players.OrderBy(x => x.Name).ToListAsync();
         }
 
-        public Task<Player> GetById(int id)
+        public async Task<Player> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await dbContext.Players.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task Update(Player player)
+        public async Task<Player> UpdateAsync(Player player)
         {
-            throw new NotImplementedException();
+            dbContext.Update(player);
+            await dbContext.SaveChangesAsync();
+            return player;
         }
     }
 }

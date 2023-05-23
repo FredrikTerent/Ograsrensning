@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OgraasApi.Data;
+using OgraasApi.Logic;
+using OgraasApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+var GameLogic = new GameLogic();
+GameLogic.TestGame();
+
 
 app.UseHttpsRedirection();
 

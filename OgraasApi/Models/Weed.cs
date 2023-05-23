@@ -1,6 +1,6 @@
 ﻿namespace OgraasApi.Models
 {
-	public abstract class Weed
+	public class Weed
 	{
 
         public int Id { get; set; }

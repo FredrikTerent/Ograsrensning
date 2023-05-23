@@ -4,27 +4,27 @@ namespace OgraasApi.Data
 {
     public class BoardRepository : IBoard
     {
-        public async Task Delete(int id)
+        public async Task<Board> CreateAsync(Board board)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Board>> GetAll()
+        public async Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Board> GetById(int id)
+        public async Task<IEnumerable<Board>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task Update(Board board)
+        public async Task<Board> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Create(Board board)
+        public async Task<Board> UpdateAsync(Board board)
         {
             throw new NotImplementedException();
         }
