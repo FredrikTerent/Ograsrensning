@@ -13,11 +13,12 @@ html {
     flex-direction: column;
     flex-wrap: nowrap;
     background: rgb(90,222,65);
-    background: linear-gradient(90deg, rgba(90,222,65,1) 
-                0%, rgba(80,142,56,1) 
-                50%, rgba(10,78,6,1) 100%);
+    background: linear-gradient(90deg, rgba(90,222,65,0.6027661064425771) 
+                0%, rgba(80,142,56,0.6251750700280112) 
+                50%, rgba(10,78,6,0.7316176470588236) 100%);
     padding: 20px;
     border-radius: 10px;
+    opacity: 0.8;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -34,6 +35,7 @@ body {
 }
 
 .board {
+    
 }
 
 .board-row {
@@ -47,22 +49,14 @@ body {
     border-radius: 7px;
 }
 
-board-square:hover {
-    border-color: hotpink;
-}
+    .board-square:hover {
+        background-color: #99ccff;
+    }
 
-.board-square.hit {
-    background-color: saddlebrown;
-}
+    .board-square.hit {
+        background-color: #33ff33;
+    }
 
-.board-square.miss {
-    background-color: greenyellow;
-}
-
-.my-header {
-    background-color : darkolivegreen;
-}
-
-.footer-container {
-    background-color: brown;
-}
+    .board-square.miss {
+        background-color: #ff6666;
+    }
