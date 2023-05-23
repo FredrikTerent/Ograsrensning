@@ -24,7 +24,7 @@
             var row = $(this).parent().index();
             var col = $(this).index();
 
-            $.post("Home/Click", {Row: row, Col: col}, 
+            $.post("Home/Click", {PlayerId: 1, Row: row, Col: col}, 
                 function (data) {
                     let response = $.parseJSON(data)
                     if(response.Hit === true){

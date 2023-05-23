@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OgraasFront.Data;
 using OgraasFront.Dto;
 using OgraasFront.Models;
 using System.Diagnostics;
@@ -9,10 +10,12 @@ namespace OgraasFront.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWeeds _weedsservice;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWeeds weedsservice)
         {
             _logger = logger;
+            _weedsservice = weedsservice;
         }
 
         public IActionResult Index()
@@ -22,13 +25,15 @@ namespace OgraasFront.Controllers
 
         public IActionResult Click(ClickDto click)
         {
-            var response = new ResponseDto
-            {
-                Row = click.Row,
-                Col = click.Col,
-                Hit = true,
-                Winner = false,
-            };
+            //var response = new ResponseDto
+            //{
+            //    Row = click.Row,
+            //    Col = click.Col,
+            //    Hit = true,
+            //    Winner = false,
+            //};
+
+            var response = _weedsservice.Click(click);
 
             string serializedResponse = JsonSerializer.Serialize(response);
 

@@ -8,7 +8,6 @@ namespace OgraasFront.Data
 
         public Weeds(HttpClient http)
         {
-            http.BaseAddress = new Uri("https://localhost:7268");
             _http = http;
         }
         public async Task<ResponseDto> Click(ClickDto click)
@@ -17,5 +16,7 @@ namespace OgraasFront.Data
             return (await response.Content.ReadFromJsonAsync<ResponseDto>()) ?? new ResponseDto();
 
         }
+
+        public int GetPlayerId() => 1;
     }
 }
