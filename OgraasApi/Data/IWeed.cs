@@ -4,10 +4,29 @@ namespace OgraasApi.Data
 {
     public interface IWeed
     {
-        Task<Weed> GetByIdAsync(int? id);
-        Task<IEnumerable<Weed>> GetAllAsync();
-        Task<Weed> CreateAsync(Weed weed);
-        Task<Weed> UpdateAsync(Weed weed);
-        Task DeleteAsync(int id);
+        Task<Maskros> GetMakrosByIdAsync(int? id);
+        Task<IEnumerable<Maskros>> GetAllMakrosAsync();
+        Task<Maskros> CreateKardborreAsync(Maskros makros);
+        Task<Maskros> UpdateKardborreAsync(Maskros makros);
+        Task DeleteMakrosAsync(int id);
+
+        Task<Kardborre> GetKardborreByIdAsync(int? id);
+        Task<IEnumerable<Kardborre>> GetAllKardborreAsync();
+        Task<Kardborre> CreateKardborreAsync(Kardborre kardborre);
+        Task<Kardborre> UpdateKardborreAsync(Kardborre kardborre);
+        Task DeleteKardborreAsync(int id);
+
+        Task<Kvickrot> GetKvickrotByIdAsync(int? id);
+        Task<IEnumerable<Kvickrot>> GetAllKvickrotAsync();
+        Task<Kvickrot> CreateKvickrotAsync(Kvickrot kvickrot);
+        Task<Kvickrot> UpdateKardborreAsync(Kvickrot kvickrot);
+        Task DeleteKvickrotAsync(int id);
+
+        Task<Kirskal> GetKirskalByIdAsync(int? id);
+        Task<IEnumerable<Kirskal>> GetAllKirskalAsync();
+        Task<Kirskal> CreateKirskalAsync(Kirskal kirskal);
+        Task<Kirskal> UpdateKirskalAsync(Kirskal kirskal);
+        Task DeleteKirskalAsync(int id);
+
     }
 }
