@@ -4,11 +4,11 @@ namespace OgraasApi.Data
 {
     public interface IWeed
     {
-        Task<Maskros> GetMakrosByIdAsync(int? id);
-        Task<IEnumerable<Maskros>> GetAllMakrosAsync();
-        Task<Maskros> CreateKardborreAsync(Maskros makros);
-        Task<Maskros> UpdateKardborreAsync(Maskros makros);
-        Task DeleteMakrosAsync(int id);
+        Task<Maskros> GetMaskrosByIdAsync(int? id);
+        Task<IEnumerable<Maskros>> GetAllMaskrosAsync();
+        Task<Maskros> CreateMaskrosAsync(Maskros maskros);
+        Task<Maskros> UpdateMaskrosAsync(Maskros maskros);
+        Task DeleteMaskrosAsync(int id);
 
         Task<Kardborre> GetKardborreByIdAsync(int? id);
         Task<IEnumerable<Kardborre>> GetAllKardborreAsync();
@@ -19,7 +19,7 @@ namespace OgraasApi.Data
         Task<Kvickrot> GetKvickrotByIdAsync(int? id);
         Task<IEnumerable<Kvickrot>> GetAllKvickrotAsync();
         Task<Kvickrot> CreateKvickrotAsync(Kvickrot kvickrot);
-        Task<Kvickrot> UpdateKardborreAsync(Kvickrot kvickrot);
+        Task<Kvickrot> UpdateKvickrotAsync(Kvickrot kvickrot);
         Task DeleteKvickrotAsync(int id);
 
         Task<Kirskal> GetKirskalByIdAsync(int? id);
