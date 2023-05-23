@@ -8,8 +8,7 @@ namespace OgraasApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WeedController : ControllerBase
-    {
+   
         public class WeedController : ControllerBase
         {
             private readonly IWeed weedRepo;
@@ -34,24 +33,24 @@ namespace OgraasApi.Controllers
 
             // POST api/<BoardController>
             [HttpPost]
-            public async Task<Board> Post([FromBody] Board board)
+            public async Task<Weed> Post([FromBody] Weed weed)
             {
-                return await boardRepo.CreateAsync(board);
+                return await weedRepo.CreateAsync(weed);
             }
 
             // PUT api/<BoardController>/5
             [HttpPut("{id}")]
-            public async Task Put(int id, [FromBody] Board board)
+            public async Task Put(int id, [FromBody] Weed weed)
             {
-                await boardRepo.UpdateAsync(board);
+                await weedRepo.UpdateAsync(weed);
             }
 
             // DELETE api/<BoardController>/5
             [HttpDelete("{id}")]
             public async Task Delete(int id)
             {
-                await boardRepo.DeleteAsync(id);
+                await weedRepo.DeleteAsync(id);
             }
         }
     }
-}
+
