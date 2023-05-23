@@ -65,27 +65,26 @@ namespace OgraasApi.Models
                     }
 
                     //Kolla om Cell är upptagen
-
+                    List<Cell> targetCells = new();
 
                     for (int i = rowNumberStart; i <= rowNumberEnd; i++)
                     {
                         for (int j = colNumberStart; j <= colNumberEnd; j++)
                         {
-                            if (Cells[i, j].IsOccupied)
-                            {
-                                Error = true;
-                                continue;
-                            }
-
+                            targetCells.Add(Cells[i, j]);
                         }
                     }
-                    //placera ut allt ogräs
-                    for (int i = rowNumberStart; i <= rowNumberEnd; i++)
+
+                    if(targetCells.Any(x => x.IsOccupied))
                     {
-                        for (int j = colNumberStart; j <= colNumberEnd; j++)
-                        {
-                            Cells[i, j].Weed = w;
-                        }
+                        Error = true;
+                        continue;
+                    }
+
+                    //Placera ut ogräs
+                    foreach(var cell in targetCells)
+                    {
+                        cell.Weed = w;
                     }
                     Error = false;
                 }
