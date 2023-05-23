@@ -18,9 +18,9 @@ namespace OgraasApi.Data
         {     
             List<Coordinates> coordinates = new List<Coordinates>();
             context.Add(board);
-            for (int rad  = 0; rad < 9; rad++)
+            for (int rad  = 0; rad <= 9; rad++)
             {
-                for (int col  = 0; col < 9; col++)
+                for (int col  = 0; col <= 9; col++)
                 {
                     coordinates.Add(new Coordinates() { row = rad, col = col, cell = board.Cells[rad, col], BoardId = board.Id });
                 }
@@ -69,9 +69,9 @@ namespace OgraasApi.Data
         {
             var oldCoord = context.Coordinates.Where(c => c.BoardId == board.Id).OrderBy(s => s.Id).ToList();
             List<Coordinates> coordinates = new List<Coordinates>();
-            for (int rad = 0; rad < 9; rad++)
+            for (int rad = 0; rad <= 9; rad++)
             {
-                for (int col = 0; col < 9; col++)
+                for (int col = 0; col <= 9; col++)
                 {
                     coordinates.Add(new Coordinates() { row = rad, col = col, cell = board.Cells[rad, col], BoardId = board.Id });
                 }
