@@ -18,10 +18,10 @@ namespace OgraasApi.Controllers
         {
             this.playerRepo = playerRepo;
             Logic = new GameLogic();
-        }      
+        }
 
-        // POST api/<ClickDtoController>
-        [HttpPost("{id}")]
+        // POST api/<ClickDtoController>("{id}")
+        [HttpPost]
         public HitResponse Post(ClickDto clickDto)
         {
 
