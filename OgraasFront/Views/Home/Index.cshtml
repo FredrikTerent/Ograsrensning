@@ -2,7 +2,184 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="main-container">
+    <div class="board">
+    @for (int row = 0; row < 10; row++)
+    {
+        <div class="board-row">
+            @for (int col = 0; col < 10; col++)
+            {
+                <div class="board-square" id="@($"(row) - (col)")">
+                </div>
+            }
+        </div>
+    }
 </div>
+</div>
+<div id="test"></div>
+
+@*Frontend testing. Random data. Can be used by the Game Logic team*@
+
+<script type="text/javascript">
+    $(document).ready(function () {   
+        $('.board-square').on('click', function () {
+            var row = $(this).parent().index();
+            var col = $(this).index();
+
+            // Simulate a successful response from the server
+            var mockResponse = {
+                row: row,
+                col: col,
+                isOccupied: isCellOccupied(row, col),
+                isHit: false // Initialize as false
+            };
+
+            // Handle the mock response as if it came from the server
+            handleApiResponse(mockResponse);
+        });
+    });
+
+    function handleApiResponse(response) {
+        if (response.isOccupied) {
+            // Update the cell — hit or occupied
+            $('.board-row').eq(response.row).find('.board-square').eq(response.col).addClass('hit');
+        } else {
+            // Update the cell — miss
+            $('.board-row').eq(response.row).find('.board-square').eq(response.col).addClass('miss');
+        }
+    }
+
+    var weedPositions = []; // Store weed positions
+
+    function generateWeeds() {
+        var weedSizes = [5, 4, 4, 3, 3, 3, 2, 2, 2, 2]; // Weeds
+        var weedCount = weedSizes.length; // Total number of weeds
+
+        // Place ships
+        for (var i = 0; i < weedCount; i++) {
+            var weedSize = weedSizes[i];
+
+            // Randomly determine the orientation (0 for horizontal, 1 for vertical)
+            var orientation = Math.floor(Math.random() * 2);
+
+            // Randomly select the starting position
+            var row, col;
+
+            if (orientation === 0) {
+                // Horizontal
+                row = Math.floor(Math.random() * 10);
+                col = Math.floor(Math.random() * (10 - weedSize + 1));
+            } else {
+                // Vertical
+                row = Math.floor(Math.random() * (10 - weedSize + 1));
+                col = Math.floor(Math.random() * 10);
+            }
+
+            // Check if the positions are valid and non-occupied
+            var isValid = true;
+
+            for (var j = 0; j < weedSize; j++) {
+                var currentRow = row;
+                var currentCol = col;
+
+                if (orientation === 0) {
+                    currentCol += j;
+                } else {
+                    currentRow += j;
+                }
+
+                // Check if the current position is out of field or occupied
+                if (currentRow < 0 || currentRow >= 10 || currentCol < 0 || currentCol >= 10 || isCellOccupied(currentRow, currentCol)) {
+                    isValid = false;
+                    break;
+                }
+
+                // Check if there are occupied cells horizontally, vertically, diagonally or adjacent
+                if (hasAdjacentOccupiedCell(currentRow, currentCol)) {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            // If the positions are valid, store them
+            if (isValid) {
+                var weedPositionsForSize = [];
+
+                for (var j = 0; j < weedSize; j++) {
+                    var currentRow = row;
+                    var currentCol = col;
+
+                    if (orientation === 0) {
+                        currentCol += j;
+                    } else {
+                        currentRow += j;
+                    }
+
+                    weedPositionsForSize.push({ row: currentRow, col: currentCol });
+                }
+
+                weedPositions.push(weedPositionsForSize);
+            } else {
+                // If the positions are not valid, generate new positions for the ship
+                i--;
+            }
+        }
+    }
+
+    function hasAdjacentOccupiedCell(row, col) {
+        // Check horizontally
+        for (var i = row - 1; i <= row + 1; i++) {
+            if (i >= 0 && i < 10 && isCellOccupied(i, col)) {
+                return true;
+            }
+        }
+
+        // Check vertically
+        for (var j = col - 1; j <= col + 1; j++) {
+            if (j >= 0 && j < 10 && isCellOccupied(row, j)) {
+                return true;
+            }
+        }
+
+        // Check diagonally
+        if (row > 0 && col > 0 && isCellOccupied(row - 1, col - 1)) {
+            return true;
+        }
+
+        if (row > 0 && col < 9 && isCellOccupied(row - 1, col + 1)) {
+            return true;
+        }
+
+        if (row < 9 && col > 0 && isCellOccupied(row + 1, col - 1)) {
+            return true;
+        }
+
+        if (row < 9 && col < 9 && isCellOccupied(row + 1, col + 1)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function isCellOccupied(row, col) {
+        // Check if the cell is occupied
+        for (var i = 0; i < weedPositions.length; i++) {
+            var weed = weedPositions[i];
+            for (var j = 0; j < weed.length; j++) {
+                if (weed[j].row === row && weed[j].col === col) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function markCellAsOccupied(row, col) {
+        // Mark the cell as occupied
+        var cell = $('.board-row').eq(row).find('.board-square').eq(col);
+        cell.addClass('hit');
+    }
+
+    // Generate the board on load
+    generateWeeds();
+</script>
