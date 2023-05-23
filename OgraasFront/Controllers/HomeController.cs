@@ -20,7 +20,7 @@ namespace OgraasFront.Controllers
             return View();
         }
 
-        public IActionResult Click(clickDto click)
+        public IActionResult Click(ClickDto click)
         {
             var response = new ResponseDto
             {
