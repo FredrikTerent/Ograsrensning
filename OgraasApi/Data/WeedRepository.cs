@@ -88,6 +88,11 @@ namespace OgraasApi.Data
             return await _dbContext.Set<Maskros>().ToListAsync();
         }
 
+        public async Task<IEnumerable<Weed>> GetAllWeedAsync()
+        {
+            return await _dbContext.Set<Weed>().ToListAsync();
+        }
+
         public async Task<Kardborre> GetKardborreByIdAsync(int? id)
         {
             return await _dbContext.Set<Kardborre>().FindAsync(id);
@@ -106,6 +111,10 @@ namespace OgraasApi.Data
         public async Task<Maskros> GetMaskrosByIdAsync(int? id)
         {
             return await _dbContext.Set<Maskros>().FindAsync(id);
+        }
+        public async Task<Weed> GetWeedByIdAsync(int id)
+        {
+            return await _dbContext.Set<Weed>().FindAsync(id);
         }
 
         public async Task<Maskros> UpdateMaskrosAsync(Maskros maskros)
@@ -135,5 +144,7 @@ namespace OgraasApi.Data
             await _dbContext.SaveChangesAsync();
             return kirskal;
         }
+
+
     }
 }
